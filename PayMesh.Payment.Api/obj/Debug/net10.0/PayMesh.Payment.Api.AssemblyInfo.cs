@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PayMesh.Payment.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06cd1fb0aef582065a423a32112b19413a3cdba5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46499f8108333e9c67d15e7185d6b98735fa9a36")]
 [assembly: System.Reflection.AssemblyProductAttribute("PayMesh.Payment.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PayMesh.Payment.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

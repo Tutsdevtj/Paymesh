@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="PayMesh.Payment.Api/PayMesh.Payment.Api.csproj" />
+  <Project Path="PayMesh.Wallet.Api/PayMesh.Wallet.Api.csproj" />
+</Solution>

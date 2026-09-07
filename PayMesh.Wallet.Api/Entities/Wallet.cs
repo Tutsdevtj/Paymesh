@@ -52,7 +52,8 @@ public class WalletEntity
         //     throw new InvalidOperationException("Cannot delete a wallet with pending transactions.");
         // }
 
-
+        // tava tentando decidir se deveria estar na entidade ou no service, mas vai ficar na entidade pq nas minhas pesquisas o ideal é estar private set na entidade pra
+        // não permitir qualquer area do projeto modificar os valores
         Status = WalletStatus.Inactive;
         UpdatedAt = DateTime.UtcNow;
     }

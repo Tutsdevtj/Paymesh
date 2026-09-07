@@ -1,0 +1,25 @@
+services:
+  wallet-database:
+    image: postgres:17
+    container_name: paymesh-wallet-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: paymesh_wallet
+      POSTGRES_USER: paymesh
+      POSTGRES_PASSWORD: paymesh_dev
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - wallet_postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U paymesh -d paymesh_wallet"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  wallet_postgres_data:

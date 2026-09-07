@@ -1,14 +1,22 @@
-public class Wallet
+using PayMesh.Wallet.Api.Entities.Enums;
+
+namespace PayMesh.Wallet.Api.Entities;
+
+public class WalletEntity
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     public decimal Balance { get; set; }
 
     public string Currency { get; set; } = string.Empty;
 
     public DateTime CreatedAt { get; set; }
+    
+    public DateTime UpdatedAt { get; set; }
 
     public int OwnerId { get; set; }
+
+    public WalletStatus Status { get; private set; } = WalletStatus.Active;
 
     public void Deposit(decimal pAmount)
     {
@@ -27,6 +35,26 @@ public class Wallet
         throw new ArgumentException("Insufficient funds for withdrawal.");
 
         Balance -= pAmount;
+    }
+
+    public void Close()
+    {
+        if (Balance != 0)
+            throw new InvalidOperationException(
+                "A wallet with balance cannot be closed.");
+
+        if (Status == WalletStatus.Inactive)
+            throw new InvalidOperationException(
+                "Wallet is already closed.");
+
+        // if(wallet.Transactions.Any(t => t.Status == TransactionStatus.Pending))
+        // {
+        //     throw new InvalidOperationException("Cannot delete a wallet with pending transactions.");
+        // }
+
+
+        Status = WalletStatus.Inactive;
+        UpdatedAt = DateTime.UtcNow;
     }
 }
 

@@ -31,7 +31,7 @@ public class WalletEntity
         if(pAmount <= 0)
         throw new ArgumentException("Withdrawal amount must be greater than zero.");
 
-        if(pAmount >= Balance)
+        if(pAmount > Balance)
         throw new ArgumentException("Insufficient funds for withdrawal.");
 
         Balance -= pAmount;

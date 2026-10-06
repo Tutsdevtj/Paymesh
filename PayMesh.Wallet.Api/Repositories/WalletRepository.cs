@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 using PayMesh.Wallet.Api.Data;
 using PayMesh.Wallet.Api.Entities;
 using PayMesh.Wallet.Api.Entities.Enums;
@@ -34,10 +35,16 @@ public class WalletRepository : IWalletRepository
         return _dbContext.SaveChangesAsync();
     }
 
-    public Task<IEnumerable<WalletEntity>> GetAllWalletsAsync()
-    {
-        throw new NotImplementedException();
-    }
+public async Task<IEnumerable<WalletEntity>> GetAllWalletsAsync(int pSkip, int pTake)
+{
+    return await _dbContext.Wallets
+        .AsNoTracking()
+        .Where(w => w.Status == WalletStatus.Active)
+        .OrderBy(w => w.Id)
+        .Skip(pSkip)
+        .Take(pTake)
+        .ToListAsync();
+}
 
     public async Task<WalletEntity> GetWalletByIdAsync(Guid walletId)
     {

@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net10.0": {
       "Humanizer.Core/2.14.1": {
@@ -2207,19 +2207,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Arthu\\.nuget\\packages\\": {}
+    "C:\\Users\\arthur.reis\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Arthu\\OneDrive\\Desktop\\ppe studa pai\\Paymesh\\Paymesh.Wallet.Api\\PayMesh.Wallet.Api.csproj",
+      "projectUniqueName": "C:\\Users\\arthur.reis\\Desktop\\Paymesh\\PayMesh.Wallet.Api\\PayMesh.Wallet.Api.csproj",
       "projectName": "PayMesh.Wallet.Api",
-      "projectPath": "C:\\Users\\Arthu\\OneDrive\\Desktop\\ppe studa pai\\Paymesh\\Paymesh.Wallet.Api\\PayMesh.Wallet.Api.csproj",
-      "packagesPath": "C:\\Users\\Arthu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Arthu\\OneDrive\\Desktop\\ppe studa pai\\Paymesh\\Paymesh.Wallet.Api\\obj\\",
+      "projectPath": "C:\\Users\\arthur.reis\\Desktop\\Paymesh\\PayMesh.Wallet.Api\\PayMesh.Wallet.Api.csproj",
+      "packagesPath": "C:\\Users\\arthur.reis\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\arthur.reis\\Desktop\\Paymesh\\PayMesh.Wallet.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Arthu\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\arthur.reis\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
@@ -2229,6 +2229,7 @@
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -2243,10 +2244,11 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0": {
+        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": {
@@ -2287,7 +2289,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

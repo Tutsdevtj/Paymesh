@@ -11,16 +11,12 @@ public class WalletService : IWalletService
 
     public async Task<WalletEntity> GetWalletByIdAsync(Guid walletId)
     {
-        var wallet = await _walletRepository.GetWalletByIdAsync(walletId);
-
-        return wallet
-            ?? throw new KeyNotFoundException(
-                $"Wallet with ID {walletId} not found.");
+        return await _walletRepository.GetWalletByIdAsync(walletId);
     }
 
-    public async Task<IEnumerable<WalletEntity>> GetAllWalletsAsync()
+    public async Task<IEnumerable<WalletEntity>> GetAllWalletsAsync(int pSkip, int pTake)
     {
-        return await _walletRepository.GetAllWalletsAsync();
+        return await _walletRepository.GetAllWalletsAsync(pSkip, pTake);
     }
 
     public async Task AddWalletAsync(WalletEntity wallet)

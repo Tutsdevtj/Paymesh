@@ -12,7 +12,7 @@ using PayMesh.Wallet.Api.Data;
 namespace PayMesh.Wallet.Api.Migrations
 {
     [DbContext(typeof(WalletDbContext))]
-    [Migration("20260906151946_InitialDb")]
+    [Migration("20261006145506_InitialDb")]
     partial class InitialDb
     {
         /// <inheritdoc />
@@ -27,11 +27,9 @@ namespace PayMesh.Wallet.Api.Migrations
 
             modelBuilder.Entity("PayMesh.Wallet.Api.Entities.WalletEntity", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<decimal>("Balance")
                         .HasColumnType("numeric");
@@ -45,6 +43,12 @@ namespace PayMesh.Wallet.Api.Migrations
 
                     b.Property<int>("OwnerId")
                         .HasColumnType("integer");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 

@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using PayMesh.Wallet.Api.Data;
 using PayMesh.Wallet.Api.Entities;
@@ -14,9 +13,35 @@ public class WalletRepository : IWalletRepository
         _dbContext = pDbContext ?? throw new ArgumentNullException(nameof(pDbContext));
     }
 
+    public async Task<WalletEntity> GetWalletByIdAsync(Guid walletId)
+    {
+        var wallet = await _dbContext.Wallets.FindAsync(walletId);
+
+        return wallet ?? throw new KeyNotFoundException($"Wallet with ID {walletId} not found.");
+    }
+
+    public async Task<IEnumerable<WalletEntity>> GetAllWalletsAsync(int pTop, int pTake)
+    {
+        return await _dbContext.Wallets
+            .AsNoTracking()
+            .Where(pWallet => pWallet.Status == WalletStatus.Active)
+            .OrderBy(pWallet => pWallet.CreatedAt)
+            .ThenBy(pWallet => pWallet.Id)
+            .Skip(pTop)
+            .Take(pTake)
+            .ToListAsync();
+    }
+
     public Task AddWalletAsync(WalletEntity wallet)
     {
         _dbContext.Wallets.Add(wallet);
+
+        return _dbContext.SaveChangesAsync();
+    }
+
+    public Task UpdateWalletAsync(WalletEntity wallet)
+    {
+        _dbContext.Wallets.Update(wallet);
 
         return _dbContext.SaveChangesAsync();
     }
@@ -31,31 +56,6 @@ public class WalletRepository : IWalletRepository
         // }
 
         wallet.Close();
-
-        return _dbContext.SaveChangesAsync();
-    }
-
-public async Task<IEnumerable<WalletEntity>> GetAllWalletsAsync(int pSkip, int pTake)
-{
-    return await _dbContext.Wallets
-        .AsNoTracking()
-        .Where(w => w.Status == WalletStatus.Active)
-        .OrderBy(w => w.Id)
-        .Skip(pSkip)
-        .Take(pTake)
-        .ToListAsync();
-}
-
-    public async Task<WalletEntity> GetWalletByIdAsync(Guid walletId)
-    {
-        var wallet = await _dbContext.Wallets.FindAsync(walletId);
-
-        return wallet ?? throw new KeyNotFoundException($"Wallet with ID {walletId} not found.");
-    }
-
-    public Task UpdateWalletAsync(WalletEntity wallet)
-    {
-        _dbContext.Wallets.Update(wallet);
 
         return _dbContext.SaveChangesAsync();
     }

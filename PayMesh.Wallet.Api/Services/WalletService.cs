@@ -14,9 +14,9 @@ public class WalletService : IWalletService
         return await _walletRepository.GetWalletByIdAsync(walletId);
     }
 
-    public async Task<IEnumerable<WalletEntity>> GetAllWalletsAsync(int pSkip, int pTake)
+    public async Task<IEnumerable<WalletEntity>> GetAllWalletsAsync(int pTop, int pTake)
     {
-        return await _walletRepository.GetAllWalletsAsync(pSkip, pTake);
+        return await _walletRepository.GetAllWalletsAsync(pTop, pTake);
     }
 
     public async Task AddWalletAsync(WalletEntity wallet)

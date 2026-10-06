@@ -49,7 +49,7 @@ public class WalletEntity
 
         // if(wallet.Transactions.Any(t => t.Status == TransactionStatus.Pending))
         // {
-        //     throw new InvalidOperationException("Cannot delete a wallet with pending transactions.");
+        //     throw new InvalidOperationException("Cannot delete a wallet with pending transactions."); // n tem transaction ainda por isso ta comentado
         // }
 
         // tava tentando decidir se deveria estar na entidade ou no service, mas vai ficar na entidade pq nas minhas pesquisas o ideal é estar private set na entidade pra
